@@ -22,17 +22,16 @@ public class MapToRegionParserTest
         Assert.Equal(2, map.Count());
     }
 
-    [Fact]
-    public void TestPerimeterOfSinglePlot()
+    [Theory]
+    [InlineData("a", 4)]
+    [InlineData("aa", 6)]
+    public void TestPerimeterOfSinglePlot(string mapString, int expectedPerimeter)
     {
-        // Given
-        var mapString = "a";
-
         // When
         var map = MapToRegionParser.Parse(mapString);
     
         // Then
-        Assert.Equal(4, map[0].Perimeter);
+        Assert.Equal(expectedPerimeter, map[0].Perimeter);
     }
     
     [Fact]
