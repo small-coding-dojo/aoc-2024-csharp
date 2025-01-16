@@ -10,7 +10,7 @@ public class MapToRegionParserTest
     }
 
     [Fact]
-    public void TestName()
+    public void ReturnTwoRegions()
     {
         // given
         var mapString = "ab";
@@ -23,16 +23,25 @@ public class MapToRegionParserTest
     }
 
     [Fact]
-    public void TestPerimeterOfSinglePlot()
+    public void ReturnCorrectAreaOfTwoRegions()
     {
-        // Given
-        var mapString = "a";
+        var testData = "AB";
+        var map = MapToRegionParser.Parse(testData);
 
+        Assert.Equal(1, map.First().Area);
+        Assert.Equal(1, map.Last().Area);
+    }
+ 
+    [Theory]
+    [InlineData("a", 4)]
+    [InlineData("aa", 6)]
+    public void TestPerimeterOfSinglePlot(string mapString, int expectedPerimeter)
+    {
         // When
         var map = MapToRegionParser.Parse(mapString);
     
         // Then
-        Assert.Equal(4, map[0].Perimeter);
+        Assert.Equal(expectedPerimeter, map[0].Perimeter);
     }
     
     [Fact]
