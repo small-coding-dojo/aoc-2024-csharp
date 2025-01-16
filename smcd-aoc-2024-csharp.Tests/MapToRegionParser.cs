@@ -44,7 +44,10 @@ static class MapToRegionParser {
                     newPlantType = map[column];
 
                     if (newPlantType == plantType)
+                    {
                         region.Perimeter += 2;
+                        region.Area += 1;
+                    }
                 }
 
             } while (column < map.Length && plantType == newPlantType);

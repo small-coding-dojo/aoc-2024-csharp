@@ -31,7 +31,17 @@ public class MapToRegionParserTest
         Assert.Equal(1, map.First().Area);
         Assert.Equal(1, map.Last().Area);
     }
- 
+
+    [Fact]
+    public void ReturnCorrectAreaOfTwoBiggerRegions()
+    {
+        var testData = "AAABBBBB";
+        var map = MapToRegionParser.Parse(testData);
+
+        Assert.Equal(3, map.First().Area);
+        Assert.Equal(5, map.Last().Area);
+    }
+
     [Theory]
     [InlineData("a", 4)]
     [InlineData("aa", 6)]
