@@ -23,8 +23,28 @@ static class MapToRegionParser {
 
     (3A 3X 3Z) + (2A 4X 3Z)   = (3+2)A Pe Ar
     **/   
+    
+    /*
+                
+     hashMap 0 +1
+            +1
+            
+    currentPosition = map[0,0]
+    area += checkNextInRow(currentPosition)
+    area += checkNextInColumn(currentPosition)
+    
+    currentPosition = map[0,0]
+    area += alleColumnsInRow...
+    currentPosition = nextRow ++
+    area += alleColumnsInRow
+      
+     */
+    
     public static List<Region> Parse(string map)
     {
+        var rows = map.Split("\n");
+        var row = 0;
+        
         var regions = new List<Region>();
         var column = 0;
         while(column < map.Length)
