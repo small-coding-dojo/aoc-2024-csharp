@@ -68,6 +68,14 @@ public class MapToRegionParserTest
     }
 
     [Fact]
+    public void blah()
+    {
+        var mapString = "abcde";
+        var map = MapToRegionParser.Parse(mapString);
+        Assert.Equal(5, map.Count);
+    }
+
+    [Fact]
     public void ReturnCorrectAreaOfOneSpanningRegion()
     {
         var mapString = "A\nA";

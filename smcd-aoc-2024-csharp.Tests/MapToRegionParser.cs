@@ -43,8 +43,19 @@ static class MapToRegionParser {
     public static List<Region> Parse(string map)
     {
         var rows = map.Split("\n");
-        var row = 0;
         
+        var regions = newMethod(rows[0]);
+
+        if(rows.Length > 1)
+        {
+            regions[0].Area++;
+        }
+
+        return regions;
+    }
+
+    public static List<Region> newMethod(string map)
+    {
         var regions = new List<Region>();
         var column = 0;
         while(column < map.Length)
