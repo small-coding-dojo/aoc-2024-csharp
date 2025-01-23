@@ -56,6 +56,7 @@ static class MapToRegionParser {
         return regions;
     }
 
+    // Identify the regions in the first row
     public static List<Region> newMethod(string map)
     {
         var regions = new List<Region>();
