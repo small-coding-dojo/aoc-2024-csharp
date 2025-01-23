@@ -45,10 +45,12 @@ static class MapToRegionParser {
         var rows = map.Split("\n");
         
         var regions = newMethod(rows[0]);
-
+        
         if(rows.Length > 1)
         {
-            regions[0].Area++;
+            var regions2 = newMethod(rows[1]);
+            
+            regions[0].Area += regions2[0].Area;
         }
 
         return regions;
