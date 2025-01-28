@@ -66,4 +66,20 @@ public class MapToRegionParserTest
         // Then
         Assert.Equal(1, map[0].Area);
     }
+
+    [Fact]
+    public void ReturnCorrectAreaOfOneSpanningRegion1x2()
+    {
+        var mapString = "A\nA";
+        var map = MapToRegionParser.Parse(mapString);
+        Assert.Equal(2, map[0].Area);
+    }
+    
+    [Fact]
+    public void ReturnCorrectAreaOfOneSpanningRegion2x2()
+    {
+        var mapString = "AA\nAA";
+        var map = MapToRegionParser.Parse(mapString);
+        Assert.Equal(4, map[0].Area);
+    }
 }
