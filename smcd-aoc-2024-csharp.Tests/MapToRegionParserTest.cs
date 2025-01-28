@@ -93,5 +93,18 @@ public class MapToRegionParserTest
         Assert.True(2 == map[0].Area, $"A area should have size 2, but has {map[0].Area}");
         Assert.True(2 == map[1].Area, $"B area should have size 2, but has {map[1].Area}");
 
-    }  
+    }
+
+    [Fact]
+    public void Support3RowsWith2VerticalAreas()
+    {
+        var mapString = "AB\nAB\nAB";
+        
+        var map = MapToRegionParser.Parse(mapString);
+        
+        Assert.True(3 == map[0].Area, $"A area should have size 3, but has {map[0].Area}");
+        Assert.True(3 == map[1].Area, $"B area should have size 3, but has {map[1].Area}");
+    }
+
+
 }

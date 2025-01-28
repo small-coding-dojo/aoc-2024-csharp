@@ -7,13 +7,15 @@ static class MapToRegionParser {
         var rows = map.Split("\n");
         
         var regions = IdentifyRegionsInRow(rows[0]);
-        
-        if(rows.Length > 1)
+
+        for (var rowIndex = 1; rowIndex < rows.Length; rowIndex++)
         {
+            // the current solution assumes, that all input rows are identical
             var regions2 = IdentifyRegionsInRow(rows[1]);
             
             regions = MergeRegions(regions, regions2);
         }
+        
 
         return regions;
     }
