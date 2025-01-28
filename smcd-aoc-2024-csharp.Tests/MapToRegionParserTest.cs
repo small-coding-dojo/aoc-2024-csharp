@@ -82,4 +82,16 @@ public class MapToRegionParserTest
         var map = MapToRegionParser.Parse(mapString);
         Assert.Equal(4, map[0].Area);
     }
+
+    [Fact]
+    public void TESTNAME()
+    {
+        var mapString = "AB\nAB";
+
+        var map = MapToRegionParser.Parse(mapString);
+
+        Assert.Equal(2, map[0].Area);
+        Assert.Equal(2, map[1].Area);
+
+    }  
 }
