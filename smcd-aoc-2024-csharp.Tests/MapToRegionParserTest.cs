@@ -90,8 +90,8 @@ public class MapToRegionParserTest
 
         var map = MapToRegionParser.Parse(mapString);
 
-        Assert.Equal(2, map[0].Area);
-        Assert.Equal(2, map[1].Area);
+        Assert.True(2 == map[0].Area, $"A area should have size 2, but has {map[0].Area}");
+        Assert.True(2 == map[1].Area, $"B area should have size 2, but has {map[1].Area}");
 
     }  
 }

@@ -51,6 +51,9 @@ static class MapToRegionParser {
             var regions2 = IdentifyRegionsInRow(rows[1]);
             
             regions[0].Area += regions2[0].Area;
+            if ( regions.Count > 1) {
+                regions[1].Area += regions2[1].Area;
+            }
         }
 
         return regions;
