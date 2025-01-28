@@ -2,44 +2,6 @@ namespace smcd_aoc_2024_csharp.Tests;
 
 static class MapToRegionParser {
     
-    /**
-    liste_noch_zu_besuchender_koordinaten = ...
-
-
-    solange noch koordinaten vorhanden
-        # behandle eine region und entferne dessen koordinaten
-        schlange = erste offene Posi
-
-        solange ich was von der sachlange nehmen kann
-            nächste Posi
-            nehme alle erreichbaren gleichen pflanzen in die schlange auf
-            verrechne perimeter + area
-
-
-    XXXX
-        x
-    X  x
-    XXXX
-
-    (3A 3X 3Z) + (2A 4X 3Z)   = (3+2)A Pe Ar
-    **/   
-    
-    /*
-                
-     hashMap 0 +1
-            +1
-            
-    currentPosition = map[0,0]
-    area += checkNextInRow(currentPosition)
-    area += checkNextInColumn(currentPosition)
-    
-    currentPosition = map[0,0]
-    area += alleColumnsInRow...
-    currentPosition = nextRow ++
-    area += alleColumnsInRow
-      
-     */
-    
     public static List<Region> Parse(string map)
     {
         var rows = map.Split("\n");
@@ -50,13 +12,23 @@ static class MapToRegionParser {
         {
             var regions2 = IdentifyRegionsInRow(rows[1]);
             
-            regions[0].Area += regions2[0].Area;
-            if ( regions.Count > 1) {
-                regions[1].Area += regions2[1].Area;
-            }
+            regions = MergeRegions(regions, regions2);
         }
 
         return regions;
+    }
+
+    private static List<Region> MergeRegions(List<Region> first, List<Region> second)
+    {
+        List<Region> result = [..first];
+
+        result[0].Area += second[0].Area;
+
+        if ( second.Count > 1) {
+            result[1].Area += second[1].Area;
+        }
+
+        return result;
     }
 
     private static List<Region> IdentifyRegionsInRow(string row)

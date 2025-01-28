@@ -84,7 +84,7 @@ public class MapToRegionParserTest
     }
 
     [Fact]
-    public void TESTNAME()
+    public void ReturnCorrectAreaOfTwoSpanningRegions2x2()
     {
         var mapString = "AB\nAB";
 
